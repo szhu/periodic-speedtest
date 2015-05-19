@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ExitTimeOut</key>
+	<integer>10</integer>
+	<key>Label</key>
+	<string>com.interestinglythere.periodicSpeedTest</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>bash</string>
+		<string>-c</string>
+		<string>OUT=~/Library/Logs/com.interestinglythere.periodicSpeedTest.out
+echo &gt;&gt; $OUT 2&gt;&amp;1
+echo ----- &gt;&gt; $OUT 2&gt;&amp;1
+START="$(date '+%s')"
+date '+Date: %Y-%m-%d %H.%M.%S' &gt;&gt; $OUT 2&gt;&amp;1
+echo -n 'Info: ' &gt;&gt; $OUT 2&gt;&amp;1
+ls -1l /usr/local/bin/speedtest-cli &gt;&gt; $OUT 2&gt;&amp;1
+/usr/local/bin/speedtest-cli &gt;&gt; $OUT 2&gt;&amp;1
+END="$(date '+%s')"
+echo -n 'Took: ' &gt;&gt; $OUT 2&gt;&amp;1
+echo "$END - $START" | bc &gt;&gt; $OUT 2&gt;&amp;1
+</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Minute</key>
+			<integer>15</integer>
+		</dict>
+		<dict>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+		<dict>
+			<key>Minute</key>
+			<integer>45</integer>
+		</dict>
+	</array>
+	<key>TimeOut</key>
+	<integer>600</integer>
+</dict>
+</plist>
